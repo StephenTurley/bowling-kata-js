@@ -9,10 +9,10 @@ let score = (line) => {
 let scoreReducer = (score, current) => score + current
 
 let scoreFrame = (frame) => {
-  return [...frame].map(valueOf)
+  return [...frame]
+    .map(valueOf)
     .reduce(scoreReducer, 0);
 }
-
 
 let valueOf = (roll) => {
   switch(roll) {

@@ -1,13 +1,18 @@
 let score = (line) => {
   let frames = line.split(' ');
-  let score = 0;
 
-  frames.forEach((frame)=>{
-    score += valueOf(frame[0]);
-    score += valueOf(frame[1]);
-  });
-  return score;
+  return frames
+    .map(scoreFrame)
+    .reduce(scoreReducer, 0);
 }
+
+let scoreReducer = (score, current) => score + current
+
+let scoreFrame = (frame) => {
+  return [...frame].map(valueOf)
+    .reduce(scoreReducer, 0);
+}
+
 
 let valueOf = (roll) => {
   switch(roll) {
